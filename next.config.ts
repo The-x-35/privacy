@@ -27,22 +27,8 @@ const nextConfig: NextConfig = {
       "node-localstorage": path.join(__dirname, "lib", "node-localstorage-stub.ts"),
       "node:path": path.join(__dirname, "lib", "path-shim.js"),
       "node:fs": path.join(__dirname, "lib", "empty.js"),
-      "hasher_wasm_simd_bg.wasm": path.join(
-        __dirname,
-        "node_modules",
-        "@lightprotocol",
-        "hasher.rs",
-        "dist",
-        "hasher_wasm_simd_bg.wasm"
-      ),
-      "light_wasm_hasher_bg.wasm": path.join(
-        __dirname,
-        "node_modules",
-        "@lightprotocol",
-        "hasher.rs",
-        "dist",
-        "light_wasm_hasher_bg.wasm"
-      ),
+      "hasher_wasm_simd_bg.wasm": path.join(__dirname, "public", "wasm", "hasher_wasm_simd_bg.wasm"),
+      "light_wasm_hasher_bg.wasm": path.join(__dirname, "public", "wasm", "light_wasm_hasher_bg.wasm"),
       "pino-pretty": path.join(__dirname, "lib", "empty.js"),
     };
     // Handle node: scheme imports explicitly
@@ -67,8 +53,8 @@ const nextConfig: NextConfig = {
       "node-localstorage": "./lib/node-localstorage-stub.ts",
       "node:path": "./lib/path-shim.js",
       "node:fs": "./lib/empty.js",
-      "hasher_wasm_simd_bg.wasm": "./node_modules/@lightprotocol/hasher.rs/dist/hasher_wasm_simd_bg.wasm",
-      "light_wasm_hasher_bg.wasm": "./node_modules/@lightprotocol/hasher.rs/dist/light_wasm_hasher_bg.wasm",
+      "hasher_wasm_simd_bg.wasm": "./public/wasm/hasher_wasm_simd_bg.wasm",
+      "light_wasm_hasher_bg.wasm": "./public/wasm/light_wasm_hasher_bg.wasm",
     },
   },
 };
