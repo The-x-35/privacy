@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Privacy Cash SDK Test App
 
-## Getting Started
+A Next.js application to test all Privacy Cash SDK functions with Phantom wallet integration.
 
-First, run the development server:
+## Features
 
+- Connect Phantom wallet
+- Deposit SOL and USDC
+- Withdraw SOL and USDC
+- View private balances
+- Clear UTXO cache
+- Transaction status tracking
+
+## Setup
+
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Copy circuit files (if not already done):
+```bash
+cp ../privacy-cash-sdk/circuit2/* public/circuit2/
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Create `.env.local` file:
+```bash
+NEXT_PUBLIC_SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+NEXT_PUBLIC_RELAYER_API_URL=https://api3.privacycash.org
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Run the development server:
+```bash
+npm run dev
+```
 
-## Learn More
+## Important Notes
 
-To learn more about Next.js, take a look at the following resources:
+### Wallet Adapter Limitation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The SDK requires a keypair for encryption key derivation. Since wallet adapters (like Phantom) don't expose private keys, this app uses a temporary keypair for SDK initialization. This means:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Transactions will be signed by your wallet (correct)
+- UTXOs may not be properly encrypted/decrypted with your actual wallet keypair
+- For full functionality, the SDK would need to support wallet adapter's `signMessage` for encryption key derivation
 
-## Deploy on Vercel
+This is a known limitation and the SDK would need modifications for full wallet adapter support.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Testing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Connect your Phantom wallet
+2. Test deposit/withdraw functions
+3. Check private balances
+4. Clear cache if needed
+
+## Project Structure
+
+- `app/` - Next.js app router pages
+- `components/` - React components
+- `lib/` - Utility functions and SDK wrapper
+- `public/circuit2/` - Circuit files for ZK proofs
