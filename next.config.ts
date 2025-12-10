@@ -67,6 +67,8 @@ const nextConfig: NextConfig = {
       "node-localstorage": "./lib/node-localstorage-stub.ts",
       "node:path": "./lib/path-shim.js",
       "node:fs": "./lib/empty.js",
+      "hasher_wasm_simd_bg.wasm": "./node_modules/@lightprotocol/hasher.rs/dist/hasher_wasm_simd_bg.wasm",
+      "light_wasm_hasher_bg.wasm": "./node_modules/@lightprotocol/hasher.rs/dist/light_wasm_hasher_bg.wasm",
     },
   },
 };
