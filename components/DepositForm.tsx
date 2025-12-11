@@ -108,7 +108,7 @@ export default function DepositForm({ privacyCash, connection, signTransaction }
             step="any"
             value={activeTab === 'sol' ? solAmount : usdcAmount}
             onChange={(e) => activeTab === 'sol' ? setSolAmount(e.target.value) : setUsdcAmount(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
             placeholder={`Enter ${activeTab === 'sol' ? 'SOL' : 'USDC'} amount`}
           />
         </div>
